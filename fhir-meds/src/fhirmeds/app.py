@@ -1,14 +1,14 @@
-from flask import Flask, render_template, redirect, request, url_for, g, flash
-from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
-from flask_login.mixins import AnonymousUserMixin, UserMixin
-from scripts.py.role_required import ROLE_required, not_ROLE
-from scripts.py.mysqlDB import myDB, DuplicateValue
-from scripts.py.dbSchema import Users
 import logging
 import os
 import random
 import execjs
 import bcrypt
+from flask import Flask, render_template, redirect, request, url_for, flash
+from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
+from flask_login.mixins import AnonymousUserMixin, UserMixin
+from scripts.py.role_required import ROLE_required, not_ROLE
+from scripts.py.mysqlDB import myDB, DuplicateValue
+from scripts.py.dbSchema import Users
 
 
 mydb = myDB()
@@ -60,7 +60,7 @@ def home():
 
 
 
-@app.route('/books')
+@app.route('/reminders')
 def reminders():
     # books_db = Books() # THIS SHOULD BE REPLACED WITH A FHIR SEARCH FUNCTION
     reminders_dict = {}#books_db.read(mydb)
@@ -87,7 +87,7 @@ def search():
     if current_user.is_authenticated:
         logged_in = True
 
-    return render_template('books.html', books=reminders_dict, logged_in=logged_in)
+    return render_template('reminders.html', books=reminders_dict, logged_in=logged_in)
 
 
 @login_manager.user_loader

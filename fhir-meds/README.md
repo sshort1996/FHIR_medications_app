@@ -24,3 +24,4 @@ The Medication Management App leverages the [Fast Healthcare Interoperability Re
 - User Data Storage: User credentials and other user-specific data are stored separately and securely in a local MySQL database.
 - Data Flow: The app fetches medication and patient-related data from the FHIR server and associates it with user accounts stored in the MySQL database.
 
+
